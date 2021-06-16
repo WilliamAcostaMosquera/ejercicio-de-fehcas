@@ -1,0 +1,60 @@
+from datetime import date
+from datetime import datetime
+from datetime import timedelta
+from calendar import day_name
+
+
+
+
+def day_habil():
+    dia = datetime.now()
+    cont = 1
+    for x in range(4):
+        cont = cont+1
+        tomorrow = dia + timedelta(cont)
+        wek = day_name[tomorrow.weekday()]
+        d1 = tomorrow.strftime("%d/%m")
+        if wek == "Saturday":
+            cont = cont + 1
+        elif wek == "Sunday":
+            cont = cont + 1
+        elif d1 == "01/01":
+            cont = cont + 1
+        elif d1 == "11/01":
+            cont = cont + 1
+        elif d1 == "22/03":
+            cont = cont + 1
+        elif d1 == "01/04":
+            cont = cont + 1
+        elif d1 == "02/04":
+            cont = cont + 1
+        elif d1 == "01/05":
+            cont = cont + 1
+        elif d1 == "17/05":
+            cont = cont + 1
+        elif d1 == "07/06":
+            cont = cont + 1
+        elif d1 == "14/06":
+            cont = cont + 1
+        elif d1 == "05/07":
+            cont = cont + 1
+        elif d1 == "20/07":
+            cont = cont + 1
+        elif d1 == "07/08":
+            cont = cont + 1
+        elif d1 == "16/08":
+            cont = cont + 1
+        elif d1 == "18/10":
+            cont = cont + 1
+        elif d1 == "01/11":
+            cont = cont + 1
+        elif d1 == "15/11":
+            cont = cont + 1
+        elif d1 == "08/12":
+            cont = cont + 1
+        elif d1 == "25/12":
+            cont = cont + 1
+    return tomorrow
+
+
+print(day_habil())
