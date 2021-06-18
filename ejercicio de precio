@@ -1,0 +1,46 @@
+stdin = {'Cama de Perro,001,100.00,2.00','Juguete de Gato,001,300.00,8.00','Piano,003,100.00,2.00 ','Guitarra,003,300.00,8.00 ','Anillo,000,100.00,2.00 ','Otro,000,300.00,8.00'}
+def process_input(input):
+    #variables
+    params = input.split(",")
+    peso = 0
+    comi = 0
+    #sacar el valor del costo de envio
+    if params[3]<='4':
+        peso = 10
+    elif params[3]>='4':
+        peso = float(params[3])
+        peso = ((peso - 4)*2)+10
+    # print(peso)
+    #sacar el arancel
+    ara = (float(params[2])*10)/100
+    # print(ara)
+    #sacar el iva
+    iva = ((float(params[2])+ara+peso)*19)/100
+    # print(iva)
+    #sacar la comicion
+    if params[1] == '000':
+        comi= (float(params[2]) * 0) / 100
+        comi = ((comi)/(1-comi))
+        # print(comi)
+    elif params[1] == '001':
+        comi = (float(params[2]) * 10) / 100
+        comi = ((comi) / (1 - comi))
+        # print(comi)
+    elif params[1] == '002':
+        comi = (float(params[2]) * 5) / 100
+        comi = ((comi) / (1 - comi))
+        # print(comi)
+    elif params[1] == '003':
+        comi = (float(params[2]) * 15) / 100
+        comi = ((comi) / (1 - comi))
+        # print(comi)
+    valor = (float(params[2])+peso+ara+iva)
+    return calculate_price(params[0], valor)
+
+def calculate_price(product_name, valor):
+    return product_name,valor
+
+
+# tener cuidado en python con los newlines
+for lineinput in stdin:
+    print(process_input(lineinput))
